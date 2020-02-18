@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  influxdb:
+    ports:
+      - "8082:8082"
+      - "8086:8086"
+      - "8089:8089"
+    restart: always
+    
+  telegraf:
+    environment:
+       - interval=30s
+       - flush_interval=30s
+       - HOST_NAME=telegraf
+       - INFLUXDB_HOST=influxdb
+       - INFLUXDB_PORT=8086
+       - DATABASE=telegraf
+    tty: true
+    restart: always
+
+  grafana:
+    ports:
+       - "3000:3000"
+    restart: always
+    environment:
+      - HTTP_USER=admin
+      - HTTP_PASS=admin
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP="true"
+      - GF_AUTH_ANONYMOUS_ENABLED="true"
+      - GF_AUTH_ANONYMOUS_ORG_NAME=grafana
+      - GF_DASHBOARDS_JSON_ENABLED="true"
+      - GF_DASHBOARDS_JSON_PATH=/opt/grafana
+
+  nginx:
+    ports:
+      - "4000:4000"
+
+  api:
+    ports:
+      - "80"  
+    
+    # This makes sure that the service is always available
+    restart: always
+
+volumes:
+    influxdb-data:
