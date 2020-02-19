@@ -30,7 +30,7 @@ docker-compose down
 
 To run this on windows you have to
 
-1. Expose the dockaer daemon on `tcp://localhost:2375` without TLS (see [docker docs](https://docs.docker.com/docker-for-windows/#general)).
+1. Expose the docker daemon on `tcp://localhost:2375` without TLS (see [docker docs](https://docs.docker.com/docker-for-windows/#general)).
 2. Configure the endpoint used by the `Docker Input Plugin` under `telegraf/telegraf.conf`.
 
 ## __Information__
@@ -50,7 +50,7 @@ The Custom API also runs behind an [NGINX load balancer](https://docs.nginx.com/
 
 #### Detecting when a service is down
 
-This can be sen in the Grafana dashboard under the `Uptime per container` section. This is not a perfect way to display that the service is down, since you have to look at the uptime to get/understand that the service had some downtime (the uptime will differ from the other containers).
+This can be seen in the Grafana dashboard under the `Uptime per container` section. This is not a perfect way to display that the service is down, since you have to look at the uptime to get/understand that the service had some downtime (the uptime will differ from the other containers).
 
 Unfortunately I didn´t find a good way to detect instantly if a service is down (did some trial and error that resulted in some partially good results but I went with the raw uptime metric instead). I would very much like to know how guys you would do this.
 
