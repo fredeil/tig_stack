@@ -54,6 +54,12 @@ This can be seen in the Grafana dashboard under the `Uptime per container` secti
 
 Unfortunately I didn´t find a good way to detect instantly if a service is down (did some trial and error that resulted in some partially good results but I went with the raw uptime metric instead). I would very much like to know how guys you would do this.
 
+## Screenshots
+
+![Grafana](screenshot.png)
+
+![chordx_infra](screenshot2.png)
+
 ## __Additional resources__
 
 Various resources used for creating this project
